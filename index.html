@@ -1,260 +1,60 @@
-<style>
-/* Blue Health - WordPress用スタイル */
-.blue-health-site {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
+---
+layout: default
+title: "ホーム"
+description: "Blue Health - 健康、疾患、障害を連続性ある事象と捉え、医学・医療分野における科学的研究の推進と革新的なソリューションで、すべての人々の健康な未来を実現します"
+---
 
-/* ヒーローセクション */
-.bh-hero {
-    background: linear-gradient(135deg, #0D47A1 0%, #1976D2 50%, #2196F3 100%);
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-    margin: -20px -20px 0 -20px;
-}
-
-.bh-hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    font-weight: 300;
-}
-
-.bh-hero-subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-.bh-hero-description {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    opacity: 0.8;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.bh-button {
-    display: inline-block;
-    padding: 15px 40px;
-    background: linear-gradient(45deg, #00BCD4, #2196F3);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: transform 0.3s ease;
-}
-
-.bh-button:hover {
-    transform: translateY(-3px);
-    color: white;
-    text-decoration: none;
-}
-
-/* ミッションセクション */
-.bh-mission {
-    padding: 80px 20px;
-    background: #f8f9fa;
-}
-
-.bh-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.bh-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 50px;
-    color: #0D47A1;
-    font-weight: 300;
-    position: relative;
-}
-
-.bh-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(45deg, #2196F3, #00BCD4);
-}
-
-.bh-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.bh-card {
-    background: white;
-    padding: 30px 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    border-top: 4px solid #2196F3;
-}
-
-.bh-card:hover {
-    transform: translateY(-10px);
-}
-
-.bh-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg, #2196F3, #00BCD4);
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: white;
-}
-
-.bh-card h3 {
-    color: #0D47A1;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-}
-
-.bh-card p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-/* コンタクトセクション */
-.bh-contact {
-    background: linear-gradient(135deg, #0D47A1 0%, #1976D2 100%);
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-    margin: 0 -20px -20px -20px;
-}
-
-.bh-contact h2 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    font-weight: 300;
-}
-
-.bh-contact p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-.bh-contact-button {
-    display: inline-block;
-    padding: 15px 40px;
-    background: white;
-    color: #0D47A1;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: transform 0.3s ease;
-}
-
-.bh-contact-button:hover {
-    transform: translateY(-3px);
-    color: #0D47A1;
-    text-decoration: none;
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-    .bh-hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .bh-hero-subtitle {
-        font-size: 1.2rem;
-    }
-    
-    .bh-title {
-        font-size: 2rem;
-    }
-    
-    .bh-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .bh-contact h2 {
-        font-size: 1.8rem;
-    }
-}
-</style>
-
-<div class="blue-health-site">
-    <!-- ヒーローセクション -->
-    <section class="bh-hero">
-        <h1>Blue Health</h1>
-        <p class="bh-hero-subtitle">健康の未来を創造する</p>
-        <p class="bh-hero-description">
-            健康、疾患、障害を連続性ある事象と捉え、医学・医療分野における科学的研究の推進と革新的なソリューションで、すべての人々の健康な未来を実現します。
+<!-- ヒーローセクション -->
+<section class="hero" id="home">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Blue Health</h1>
+        <p class="hero-subtitle">健康の未来を創造する</p>
+        <p class="hero-description">
+            健康、疾患、障害を連続性ある事象と捉え、<br>
+            医学・医療分野における科学的研究の推進と革新的なソリューションで<br>
+            すべての人々の健康な未来を実現します
         </p>
-        <a href="#mission" class="bh-button">私たちについて詳しく</a>
-    </section>
+        <a href="#mission" class="cta-button">私たちについて詳しく</a>
+    </div>
+</section>
 
-    <!-- ミッションセクション -->
-    <section class="bh-mission" id="mission">
-        <div class="bh-container">
-            <h2 class="bh-title">Our Mission</h2>
-            <div class="bh-grid">
-                <div class="bh-card">
-                    <div class="bh-icon">🔬</div>
-                    <h3>科学的研究の推進</h3>
-                    <p>最先端の医学・医療分野における科学的研究を通じて、新たな知見と革新的なソリューションを創出し、医療の発展に貢献します。</p>
-                </div>
-                
-                <div class="bh-card">
-                    <div class="bh-icon">🌐</div>
-                    <h3>格差の是正とアクセス向上</h3>
-                    <p>医療・障害者格差の是正を目指し、すべての人が質の高い医療・介護サービスにアクセスできる社会の実現を推進します。</p>
-                </div>
-                
-                <div class="bh-card">
-                    <div class="bh-icon">💡</div>
-                    <h3>医療イノベーション</h3>
-                    <p>研究成果の実用化を通じて医療イノベーションを創出し、社会の課題解決と人々の生活の質向上に取り組みます。</p>
-                </div>
-                
-                <div class="bh-card">
-                    <div class="bh-icon">🤝</div>
-                    <h3>社会的理解の促進</h3>
-                    <p>障害者の社会的理解を促進し、インクルーシブな社会の構築を目指して、啓発活動と実践的な取り組みを行います。</p>
-                </div>
-                
-                <div class="bh-card">
-                    <div class="bh-icon">🌏</div>
-                    <h3>国際的な課題解決</h3>
-                    <p>国境を越えた医療課題の解決に向けて、国際的な協力関係を築き、グローバルな健康課題に取り組みます。</p>
-                </div>
-                
-                <div class="bh-card">
-                    <div class="bh-icon">📈</div>
-                    <h3>持続可能な運営</h3>
-                    <p>各種金融商品の運用・投資を通じて事業の持続可能性を確保し、長期的な視点で社会貢献活動を継続します。</p>
-                </div>
+<!-- ミッションセクション -->
+<section class="mission" id="mission">
+    <div class="container">
+        <h2 class="section-title">Our Mission</h2>
+        <div class="mission-grid">
+            {% for mission in site.data.missions %}
+            <div class="mission-card">
+                <div class="mission-icon">{{ mission.icon }}</div>
+                <h3>{{ mission.title }}</h3>
+                <p>{{ mission.description }}</p>
             </div>
+            {% endfor %}
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- コンタクトセクション -->
-    <section class="bh-contact">
-        <div class="bh-container">
-            <h2>一緒に健康の未来を創りませんか</h2>
-            <p>Blue Healthは、皆様との協力を通じて、より良い医療・健康社会の実現を目指しています。</p>
-            <a href="mailto:contact@bluehealth.co.jp" class="bh-contact-button">お問い合わせ</a>
+<!-- サービスセクション -->
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            {% for service in site.data.services %}
+            <div class="service-item">
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description }}</p>
+            </div>
+            {% endfor %}
         </div>
-    </section>
-</div>
+    </div>
+</section>
+
+<!-- コンタクトセクション -->
+<section class="contact" id="contact">
+    <div class="container">
+        <h2>一緒に健康の未来を創りませんか</h2>
+        <p>Blue Healthは、皆様との協力を通じて、より良い医療・健康社会の実現を目指しています。</p>
+        <a href="mailto:contact@bluehealth.co.jp" class="contact-button">お問い合わせ</a>
+    </div>
+</section>
