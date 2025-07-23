@@ -1,0 +1,528 @@
+---
+# Jekyll用のSCSSファイル（この Front Matter が絶対に必要！）
+---
+
+// ===========================================
+// Blue Health - Variables（変数定義）
+// ===========================================
+$primary-blue: #0D47A1;
+$secondary-blue: #1976D2;
+$accent-blue: #2196F3;
+$light-blue: #00BCD4;
+$background-light: #f8f9fa;
+$background-grey: #e9ecef;
+$text-dark: #333;
+$text-light: #666;
+$white: #ffffff;
+
+// Breakpoints
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+// Typography
+$font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+
+// ===========================================
+// Mixins（再利用可能なスタイル）
+// ===========================================
+@mixin gradient-bg($direction: 135deg, $color1: $primary-blue, $color2: $accent-blue) {
+  background: linear-gradient($direction, $color1 0%, $color2 100%);
+}
+
+@mixin card-shadow($level: 1) {
+  @if $level == 1 {
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.1);
+  } @else if $level == 2 {
+    box-shadow: 0 10px 30px rgba(33, 150, 243, 0.15);
+  } @else if $level == 3 {
+    box-shadow: 0 20px 50px rgba(33, 150, 243, 0.2);
+  }
+}
+
+@mixin button-hover {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-3px);
+    @include card-shadow(2);
+  }
+}
+
+// ===========================================
+// Base Styles（基本スタイル）
+// ===========================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-primary;
+  line-height: 1.6;
+  color: $text-dark;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: $desktop;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+  @media (max-width: $mobile) {
+    padding: 0 1rem;
+  }
+}
+
+// ===========================================
+// Header（ヘッダー）
+// ===========================================
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba($primary-blue, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  max-width: $desktop;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  
+  @media (max-width: $mobile) {
+    padding: 0 1rem;
+  }
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+  color: $white;
+  text-decoration: none;
+  @include gradient-bg(45deg, $accent-blue, $light-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  @media (max-width: $mobile) {
+    font-size: 1.5rem;
+  }
+}
+
+.nav-menu {
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    
+    @media (max-width: $mobile) {
+      position: fixed;
+      top: 70px;
+      left: -100%;
+      flex-direction: column;
+      background: rgba($primary-blue, 0.98);
+      width: 100%;
+      padding: 2rem;
+      transition: left 0.3s ease;
+      
+      &.active {
+        left: 0;
+      }
+    }
+  }
+  
+  a {
+    color: $white;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    transition: color 0.3s ease;
+    position: relative;
+    
+    &:hover {
+      color: $light-blue;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      @include gradient-bg(45deg, $accent-blue, $light-blue);
+      transition: width 0.3s ease;
+    }
+    
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  @media (max-width: $mobile) {
+    display: flex;
+  }
+  
+  span {
+    width: 25px;
+    height: 3px;
+    background: $white;
+    margin: 3px 0;
+    transition: 0.3s;
+  }
+}
+
+// ===========================================
+// Hero Section（ヒーローセクション）
+// ===========================================
+.hero {
+  height: 100vh;
+  @include gradient-bg(135deg, $primary-blue, $accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  color: $white;
+  text-align: center;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-weight: $font-weight-light;
+  letter-spacing: -2px;
+  
+  @media (max-width: $mobile) {
+    font-size: 2.5rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  
+  @media (max-width: $mobile) {
+    font-size: 1.2rem;
+  }
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+  line-height: 1.8;
+  
+  @media (max-width: $mobile) {
+    font-size: 1rem;
+  }
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 3rem;
+  @include gradient-bg(45deg, $light-blue, $accent-blue);
+  color: $white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: $font-weight-bold;
+  font-size: 1.1rem;
+  @include button-hover;
+  @include card-shadow(2);
+  
+  @media (max-width: $mobile) {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+// ===========================================
+// Section Styles（セクション共通）
+// ===========================================
+.section-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: $primary-blue;
+  font-weight: $font-weight-light;
+  position: relative;
+  
+  @media (max-width: $mobile) {
+    font-size: 2rem;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    @include gradient-bg(45deg, $accent-blue, $light-blue);
+    border-radius: 2px;
+  }
+}
+
+// ===========================================
+// Mission Section（ミッション）
+// ===========================================
+.mission {
+  padding: 6rem 2rem;
+  background: $white;
+  
+  @media (max-width: $mobile) {
+    padding: 4rem 1rem;
+  }
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.mission-card {
+  background: linear-gradient(135deg, $background-light 0%, $background-grey 100%);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba($accent-blue, 0.1);
+  position: relative;
+  overflow: hidden;
+  
+  @media (max-width: $mobile) {
+    padding: 2rem 1.5rem;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    @include gradient-bg(45deg, $accent-blue, $light-blue);
+  }
+  
+  &:hover {
+    transform: translateY(-10px);
+    @include card-shadow(2);
+  }
+}
+
+.mission-icon {
+  width: 80px;
+  height: 80px;
+  @include gradient-bg(45deg, $accent-blue, $light-blue);
+  border-radius: 50%;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: $white;
+  
+  @media (max-width: $mobile) {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
+.mission-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: $primary-blue;
+  font-weight: $font-weight-bold;
+  
+  @media (max-width: $mobile) {
+    font-size: 1.3rem;
+  }
+}
+
+.mission-card p {
+  color: $text-light;
+  line-height: 1.8;
+}
+
+// ===========================================
+// Services Section（サービス）
+// ===========================================
+.services {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, $background-light 0%, #e3f2fd 100%);
+  
+  @media (max-width: $mobile) {
+    padding: 4rem 1rem;
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.service-item {
+  background: $white;
+  padding: 3rem;
+  border-radius: 20px;
+  @include card-shadow(1);
+  transition: all 0.3s ease;
+  border-left: 5px solid $accent-blue;
+  
+  @media (max-width: $mobile) {
+    padding: 2rem 1.5rem;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    @include card-shadow(2);
+  }
+}
+
+.service-item h3 {
+  color: $primary-blue;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: $font-weight-bold;
+}
+
+.service-item p {
+  color: $text-light;
+  line-height: 1.8;
+}
+
+// ===========================================
+// Contact Section（コンタクト）
+// ===========================================
+.contact {
+  padding: 6rem 2rem;
+  @include gradient-bg(135deg, $primary-blue, $secondary-blue);
+  color: $white;
+  text-align: center;
+  
+  @media (max-width: $mobile) {
+    padding: 4rem 1rem;
+  }
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: $font-weight-light;
+  
+  @media (max-width: $mobile) {
+    font-size: 2rem;
+  }
+}
+
+.contact p {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: $white;
+  color: $primary-blue;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: $font-weight-bold;
+  font-size: 1.1rem;
+  @include button-hover;
+  @include card-shadow(2);
+  
+  @media (max-width: $mobile) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+// ===========================================
+// Footer（フッター）
+// ===========================================
+.footer {
+  background: $primary-blue;
+  color: $white;
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  
+  p {
+    opacity: 0.8;
+  }
+}
+
+// ===========================================
+// Utility Classes（ユーティリティ）
+// ===========================================
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease;
+  
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
