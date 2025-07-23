@@ -1,0 +1,28 @@
+title: "Blue Health"
+description: "健康、疾患、障害を連続性ある事象と捉え、医学・医療分野における科学的研究の推進と革新的なソリューションで、すべての人々の健康な未来を実現します"
+baseurl: "/blue-health-website"
+url: "https://yourusername.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Company Information
+company:
+  name: "Blue Health"
+  email: "contact@bluehealth.co.jp"
+  phone: "+81-3-xxxx-xxxx"
+  address: "東京都..."
+
+# Social Media
+social:
+  twitter: bluehealth
+  linkedin: company/blue-health
+  
+# SEO Settings
+lang: ja
+logo: /assets/images/logo.png
